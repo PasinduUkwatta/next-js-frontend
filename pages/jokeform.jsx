@@ -16,10 +16,10 @@ export default function AddJokeForm() {
     const fetchJokeTypes = async () => {
         try {
             const response = await axios.get('http://127.0.0.1:3300/api/jokes/types');
-            setJokeTypes(response.data.jokeTypes); // Assuming the API response contains a 'jokeTypes' field
+            setJokeTypes(response.data.jokeTypes);
         } catch (error) {
             console.error('Error fetching joke types:', error);
-            // Handle error if needed
+
         }
     };
 
@@ -34,13 +34,13 @@ export default function AddJokeForm() {
 
             const response = await axios.post(url, requestBody);
             console.log('Joke added successfully:', response.data);
-            // Optionally, you can clear the form fields after successful submission
+
             setSuccessMessage('Joke added successfully');
             setErrorMessage('');
         } catch (error) {
             console.error('Error adding joke:', error);
-            setSuccessMessage(''); // Clear success message if there was an error
-            setErrorMessage('Failed to add joke'); // Set error message
+            setSuccessMessage('');
+            setErrorMessage('Failed to add joke');
         }finally {
             setJokeContent('');
             setJokeType('');

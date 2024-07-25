@@ -21,22 +21,22 @@ export default function LatestJoke({ username }) {
 
     useEffect(() => {
         fetchLatestJoke();
-    }, []); // Fetch latest joke when component mounts
+    }, []);
 
     const fetchLatestJoke = async () => {
         setSuccessMessage("")
         setErrorMessage("")
         try {
-            const token = getCookie('token'); // Assuming you have a function to get the JWT token from cookies
+            const token = getCookie('token');
             const response = await axios.get('http://127.0.0.1:3200/api/jokes/latest', {
                 headers: {
                     'Authorization': `Bearer "${token}"`
                 }
             });
 
-            setJoke(response.data.joke); // Assuming your API response returns a 'joke' field
-            setJokeType(response.data.jokeType); // Assuming your API response returns a 'type' field
-            setJokeId(response.data._id); // Assuming your API response returns a 'type' field
+            setJoke(response.data.joke);
+            setJokeType(response.data.jokeType);
+            setJokeId(response.data._id);
         } catch (error) {
             console.error('Error fetching joke:', error);
         }
@@ -45,7 +45,7 @@ export default function LatestJoke({ username }) {
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         try {
-            const token = getCookie('token'); // Assuming you have a function to get the JWT token from cookies
+            const token = getCookie('token');
             const response = await axios.put('http://127.0.0.1:3200/api/jokes/latest/update', {
                 joke: editedJoke,
                 jokeType: editedJokeType
@@ -56,21 +56,21 @@ export default function LatestJoke({ username }) {
                 }
             });
 
-            // Assuming your backend updates successfully and returns updated joke and type
+
             setJoke(response.data.joke);
             setJokeType(response.data.jokeType);
 
-            // Clear edited fields after successful update
+
             setEditedJoke('');
             setEditedJokeType('');
 
             setSuccessMessage('Joke updated successfully');
-            setErrorMessage(''); // Clear any previous error messages
+            setErrorMessage('');
             console.log('Joke updated successfully:', response.data);
         } catch (error) {
             console.error('Error updating joke:', error);
-            setSuccessMessage(''); // Clear success message if there was an error
-            setErrorMessage('Failed to update joke'); // Set error message
+            setSuccessMessage('');
+            setErrorMessage('Failed to update joke');
         }
     };
 

@@ -14,10 +14,9 @@ export default function JokePage() {
     const fetchJokeTypes = async () => {
         try {
             const response = await axios.get('http://127.0.0.1:5000/api/jokes/types');
-            setJokeTypes(response.data.jokeTypes); // Assuming the API response contains a 'jokeTypes' field
+            setJokeTypes(response.data.jokeTypes);
         } catch (error) {
             console.error('Error fetching joke types:', error);
-            // Handle error if needed
         }
     };
 
@@ -27,10 +26,9 @@ export default function JokePage() {
             const requestBody = jokeType ? { jokeType: jokeType } : {};
 
             const response = await axios.post(url, requestBody);
-            setJoke(response.data.joke); // Assuming the API response contains a 'joke' field
+            setJoke(response.data.joke);
         } catch (error) {
             console.error('Error fetching random joke:', error);
-            // Handle error if needed
         }
     };
 
