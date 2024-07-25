@@ -8,7 +8,7 @@ export default function HomePage( {username} ) {
         <div>
             <h2>Select Your Option</h2>
             <Link href="/login">Moderate Joke</Link><br/><br/>
-            <Link href="/deliver">View Random oke</Link><br/><br/>
+            <Link href="/deliver">View Random Joke</Link><br/><br/>
             <Link href="/jokeform">Submit new Joke</Link><br/><br/>
 
         </div>
